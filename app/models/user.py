@@ -1,6 +1,12 @@
-from pydantic import BaseModel
+# app/models/user.py
+from pydantic import BaseModel, EmailStr
+from typing import Optional
 
 class User(BaseModel):
-    id: int
+    id: Optional[int]
     name: str
-    email: str
+    email: EmailStr
+
+    class Config:
+        from_attributes = True
+    email: EmailStr

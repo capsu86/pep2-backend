@@ -1,13 +1,26 @@
-from typing import List
-from app.models.user import User
-from app.interfaces.user_repository_interface import IUserRepository
+# app/repositories/user_repository.py
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.future import select
+from app.models.user_orm import UserORM
 
-class InMemoryUserRepository(IUserRepository):
-    def __init__(self):
-        self._users: List[User] = []
+class UserRepository:
+    def __init__(self, session: AsyncSession):
+        self.session = session
 
-    def add_user(self, user: User) -> None:
-        self._users.append(user)
+    async def add(self, user_orm: UserORM) -> UserORM:
+        self.session.add(user_orm)
+        await self.session.commit()
+        await self.session.refresh(user_orm)
+        return user_orm
 
-    def get_all_users(self) -> List[User]:
-        return self._users
+    async def get_all(self) -> list[UserORM]:
+        result = await self.session.execute(select(UserORM))
+        return result.scalars().all()
+
+    async def get_by_id(self, user_id: int) -> UserORM | None:
+        result = await self.session.execute(select(UserORM).where(UserORM.id == user_id))
+        return result.scalars().first()
+
+    async def get_by_email(self, email: str) -> UserORM | None:
+        result = await self.session.execute(select(UserORM).where(UserORM.email == email))
+        return result.scalars().first()

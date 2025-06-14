@@ -1,0 +1,25 @@
+{"timestamp": "2025-06-14 21:28:54,357", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:30:35,052", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:30:36,101", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:31:38,362", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:31:39,480", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:31:54,888", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:31:56,053", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:31:56,379", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:31:57,317", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:32:41,436", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:32:42,526", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:33:17,120", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:33:18,279", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:34:49,425", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:34:50,562", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:34:53,767", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/docs", "status_code": 200, "process_time_ms": 0.29, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:34:53,905", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/openapi.json", "status_code": 200, "process_time_ms": 3.52, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:34:56,561", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/users/", "status_code": 200, "process_time_ms": 19.15, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:37:12,636", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-14 21:37:13,911", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-14 21:37:17,746", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/docs", "status_code": 200, "process_time_ms": 0.26, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:37:17,863", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/openapi.json", "status_code": 200, "process_time_ms": 4.06, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:37:22,534", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/users/", "status_code": 200, "process_time_ms": 24.42, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:37:39,633", "level": "WARNING", "name": "pep2-backend", "message": "HTTPException: User not found.", "method": "GET", "url": "http://127.0.0.1:8000/users/2", "status_code": 404, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-14 21:37:39,633", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/users/2", "status_code": 404, "process_time_ms": 5.46, "client_host": "127.0.0.1"}
