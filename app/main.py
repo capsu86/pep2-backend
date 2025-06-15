@@ -1,5 +1,10 @@
 # app/main.py
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load variables from .env into os.environ
+
 from fastapi import FastAPI, Request
 from starlette.middleware.base import BaseHTTPMiddleware
 from app.database import engine, Base
@@ -11,10 +16,34 @@ import time
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
+from fastapi.middleware.cors import CORSMiddleware
+
 
 logger = get_logger("pep2-backend")
 
-app = FastAPI()
+app = FastAPI(
+    title="PEP2 Backend API",
+    description="Backend API for the PEP2 platform, used by the Angular frontend",
+    version="0.1.0",
+    openapi_tags=[
+        {"name": "auth", "description": "Authentication endpoints"},
+        {"name": "users", "description": "User management operations"}
+    ]
+)
+
+
+origins = [
+    "http://localhost:4200",  # Angular dev server
+    # Add more allowed origins here in future (e.g., production frontend)
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # allowed frontend origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(auth.router)  # mount /login and auth routes
 app.include_router(user_router)  # mount user routes
