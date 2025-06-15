@@ -216,3 +216,6 @@
 {"timestamp": "2025-06-15 10:31:50,260", "level": "WARNING", "name": "pep2-backend", "message": "HTTPException: Not authenticated", "method": "GET", "url": "http://127.0.0.1:8000/users/", "status_code": 403, "client_host": "127.0.0.1"}
 {"timestamp": "2025-06-15 10:31:50,261", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/users/", "status_code": 403, "process_time_ms": 2.13, "client_host": "127.0.0.1"}
 {"timestamp": "2025-06-15 10:32:57,058", "level": "INFO", "name": "pep2-backend", "message": "Application shutdown"}
+{"timestamp": "2025-06-15 10:32:58,273", "level": "INFO", "name": "pep2-backend", "message": "Application startup: Creating database tables if not exist"}
+{"timestamp": "2025-06-15 10:33:00,007", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/docs", "status_code": 200, "process_time_ms": 0.46, "client_host": "127.0.0.1"}
+{"timestamp": "2025-06-15 10:33:00,100", "level": "INFO", "name": "pep2-backend", "message": "HTTP request completed", "method": "GET", "url": "http://127.0.0.1:8000/openapi.json", "status_code": 200, "process_time_ms": 4.97, "client_host": "127.0.0.1"}
