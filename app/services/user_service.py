@@ -1,9 +1,11 @@
 # app/services/user_service.py
+
 import logging
-from app.models.user import User
+from app.models.user import User, UserCreate
 from app.models.user_orm import UserORM
 from app.repositories.user_repository import UserRepository
 from app.exceptions.http_exceptions import DuplicateUserException, UserNotFoundException
+from app.core.password_hashing import hash_password  # ← updated import
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +13,7 @@ class UserService:
     def __init__(self, repository: UserRepository):
         self.repository = repository
 
-    async def add_user(self, user: User) -> User:
+    async def add_user(self, user: UserCreate) -> User:
         logger.debug(f"Checking if user with email={user.email} already exists.")
         existing = await self.repository.get_by_email(user.email)
         if existing:
@@ -19,7 +21,12 @@ class UserService:
             raise DuplicateUserException()
 
         logger.info(f"Adding new user with email={user.email}")
-        user_orm = UserORM(**user.dict(exclude_unset=True))
+        hashed_pwd = hash_password(user.password)  # ← hash the password
+        user_orm = UserORM(
+            name=user.name,
+            email=user.email,
+            hashed_password=hashed_pwd  # ← store hashed password (fix: use correct field name)
+        )
         user_orm = await self.repository.add(user_orm)
         logger.info(f"User added successfully with id={user_orm.id}")
         return User.from_orm(user_orm)

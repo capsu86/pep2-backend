@@ -5,6 +5,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 from app.database import engine, Base
 import app.models.user_orm  # ensure ORM model is registered
 from app.routers.user import router as user_router
+from app.routers import auth
 from app.logger import get_logger
 import time
 from fastapi.responses import JSONResponse
@@ -14,6 +15,9 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 logger = get_logger("pep2-backend")
 
 app = FastAPI()
+
+app.include_router(auth.router)  # mount /login and auth routes
+app.include_router(user_router)  # mount user routes
 
 @app.on_event("startup")
 async def on_startup():
@@ -50,7 +54,6 @@ class LoggingMiddleware(BaseHTTPMiddleware):
         logger.info("HTTP request completed", extra=log_data)
         return response
 
-# Add the logging middleware to app
 app.add_middleware(LoggingMiddleware)
 
 # Exception handlers
@@ -91,6 +94,3 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         status_code=422,
         content={"detail": exc.errors()}
     )
-
-# Mount the user routes at root
-app.include_router(user_router)

@@ -24,3 +24,7 @@ class UserRepository:
     async def get_by_email(self, email: str) -> UserORM | None:
         result = await self.session.execute(select(UserORM).where(UserORM.email == email))
         return result.scalars().first()
+
+    async def create_access_token(self, user: UserORM) -> str:
+        access_token = auth_service.create_access_token(data={"sub": str(user.id)})
+        return Token(access_token=access_token)
